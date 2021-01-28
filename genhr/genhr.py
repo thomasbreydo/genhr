@@ -2,11 +2,13 @@ from os import PathLike
 from typing import Callable, Optional, Iterable, Union
 from zipfile import ZipFile
 
+from .types import Path
+
 
 def save_tests(
     inputs: Iterable[str],
     outputs: Iterable[str],
-    filename: Optional[PathLike] = "tests.zip",
+    filename: Path = "tests.zip",
 ):
     zipfile: ZipFile
     with ZipFile(filename, "w") as zipfile:
@@ -20,7 +22,7 @@ def save_tests(
 def make_and_save_tests(
     inputs: Iterable[str],
     solve_func: Callable[[str], str],
-    filename: Optional[PathLike] = "tests.zip",
+    filename: Path = "tests.zip",
 ):
     zipfile: ZipFile
     with ZipFile(filename, "w") as zipfile:
